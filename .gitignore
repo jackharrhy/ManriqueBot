@@ -1,3 +1,9 @@
+# enviroment specific
 node_modules
+
+# misc.
 *.swp
+
+# project specific
 .env
+log
