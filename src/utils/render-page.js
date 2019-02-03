@@ -27,8 +27,6 @@ module.exports = async (htmlString) => {
 
   const padding = 5;
 
-  console.log(pageInfo);
-
   await page.setViewport({
     height: pageInfo.height,
     width: pageInfo.width,
