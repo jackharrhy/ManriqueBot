@@ -18,6 +18,14 @@ client.on('message', (msg) => {
     const command = content.substring(prefix.length + 1);
     if (typeof responses[command] === 'string') {
       msg.reply(responses[command]);
+      return;
+    }
+
+    for (key in responses) {
+      if (content.startsWith(`${prefix} ${key}`)) {
+        responses[key](msg, command.substring(key.length + 1));
+        return;
+      }
     }
   }
 });
