@@ -22,7 +22,7 @@ client.on('message', (msg) => {
     }
 
     for (key in responses) {
-      if (content.startsWith(`${prefix} ${key}`)) {
+      if (command.startsWith(key)) {
         responses[key](msg, command.substring(key.length + 1));
         return;
       }
