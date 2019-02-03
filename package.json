@@ -12,7 +12,9 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
+    "ffmpeg-binaries": "^4.0.0",
     "katex": "^0.10.0",
+    "node-opus": "^0.3.1",
     "puppeteer": "^1.12.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",

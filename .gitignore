@@ -7,3 +7,4 @@ node_modules
 # project specific
 .env
 log
+sound
