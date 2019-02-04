@@ -17,8 +17,10 @@ module.exports = async (msg, command) => {
         json: true,
       });
     }
-  } catch(err) {
-    msg.reply('Bad success...');
+  }
+  catch(err) {
+    console.log(err);
+    msg.reply('bad success...');
     return;
   }
 
@@ -27,7 +29,7 @@ module.exports = async (msg, command) => {
     encoding: null,
   }));
 
-  msg.reply(`${xkcdInfo.title} - ${xkcdInfo.alt}`, {
+  msg.channel.send(`${xkcdInfo.title} - ${xkcdInfo.alt}`, {
     files: [xkcdImg],
   });
 }
