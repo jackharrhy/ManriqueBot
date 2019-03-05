@@ -1,6 +1,5 @@
 const ytdl = require('ytdl-core');
 
-const {projectDir} = require('../config');
 const streamOptions = {seek: 0, volume: 1};
 
 module.exports = async (msg, command) => {

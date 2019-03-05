@@ -4,34 +4,43 @@ const {
   discordToken,
 }= require('./config');
 const loggerFactory = require('./logger');
-const responses = require('./responses');
 
 const client = new Discord.Client();
 const logger = loggerFactory();
 
-client.on('ready', () => {
-  logger.info('loggedin', client.user.tag);
-});
+(async () => {
+  const responses = await require('./responses')();
 
-client.on('message', (msg) => {
-  const content = msg.content;
-  if (content.startsWith(commandPrefix)) {
-    logger.info('message', msg.author.username, msg.author.id, content);
+  client.on('ready', async () => {
+    logger.info('loggedin', client.user.tag);
+  });
 
-    const command = content.substring(commandPrefix.length + 1);
+  client.on('message', async (msg) => {
+    const content = msg.content;
+    if (content.startsWith(commandPrefix)) {
+      logger.info('message', msg.author.username, msg.author.id, content);
 
-    if (typeof responses[command] === 'string') {
-      msg.reply(responses[command]);
-      return;
-    }
+      const command = content.substring(commandPrefix.length + 1);
 
-    for (key in responses) {
-      if (command.startsWith(key)) {
-        responses[key](msg, command.substring(key.length + 1));
+      if (typeof responses[command] === 'string') {
+        msg.reply(responses[command]);
         return;
       }
-    }
-  }
-});
 
-client.login(discordToken);
+      for (key in responses) {
+        if (command.startsWith(key)) {
+          try {
+            await responses[key](msg, command.substring(key.length + 1));
+          }
+          catch(err) {
+            const {message, stack} = err;
+            msg.reply(`${message}\`\`\`${stack}\`\`\``);
+          }
+          return;
+        }
+      }
+    }
+  });
+
+  client.login(discordToken);
+})();
