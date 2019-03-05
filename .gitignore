@@ -8,3 +8,5 @@ node_modules
 .env
 log
 sound
+data/chess.db.json
+cyto/
