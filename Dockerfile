@@ -7,5 +7,6 @@ RUN npm install
 
 COPY . .
 COPY .env.dist .env
+RUN mkdir -p data/ && touch data/chess.db.json
 
 CMD ["npm", "run", "start"]
