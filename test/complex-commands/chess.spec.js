@@ -1,6 +1,6 @@
 const {assert} = require('chai');
 
-const chessFactory = require('../../src/complex-commands/chess.js');
+const chessFactory = require('../../src/complex-commands/chess');
 
 const msgMock = {
   channel: {
@@ -13,6 +13,6 @@ describe('complex-commands/chess', () => {
     const chess = await chessFactory();
     assert.isFunction(chess, 'should be function');
 
-    chess(msgMock);
+    chess(msgMock, 'foo bar');
   });
 });
