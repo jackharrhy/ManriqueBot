@@ -1,13 +1,13 @@
 kind: pipeline
 name: default
 
+#steps:
+#- name: test
+# image: node
+#commands:
+#- npm install
+#- npm run test
 steps:
-- name: test
-  image: node
-  commands:
-    - npm install
-    - npm run test
-
 - name: publish-to-docker
   image: plugins/docker
   settings:
