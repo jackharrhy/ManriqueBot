@@ -15,15 +15,10 @@ const logger = winston.createLogger({
     }),
     new winston.transports.File({
       filename: `${logFolder}/combined.log`,
-    })
+    }),
+    new winston.transports.Console(),
   ]
 });
-
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple()
-  }));
-}
 
 module.exports = () => {
   return {

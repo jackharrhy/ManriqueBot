@@ -11,6 +11,8 @@ const logger = loggerFactory();
 (async () => {
   const responses = await require('./responses')();
 
+  client.on('error', console.error);
+
   client.on('ready', async () => {
     logger.info('loggedin', client.user.tag);
   });
