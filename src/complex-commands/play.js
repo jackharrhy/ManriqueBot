@@ -1,13 +1,12 @@
-const ytdl = require('ytdl-core');
-
-const streamOptions = {seek: 0, volume: 1};
+const ytdl = require('ytdl-core-discord');
 
 module.exports = async (msg, command) => {
   if (msg.member.voiceChannel) {
     try {
       const connection = await msg.member.voiceChannel.join();
-      const stream = ytdl(command, {filter : 'audioonly'});
-      const dispatcher = connection.playStream(stream, streamOptions);
+      connection.playOpusStream(await ytdl(command, {
+        type: 'opus'
+      }));
     }
     catch(err) {
       console.log(err);

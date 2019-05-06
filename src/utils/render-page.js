@@ -1,11 +1,17 @@
 const puppeteer = require('puppeteer');
 
+/*
+  Note to self: running this in a docker container requires running it as root,
+  therefore plz do not let is parse abritrary pages!!!
+*/
+
 module.exports = async (htmlString) => {
   const browser = await puppeteer.launch({
     defaultViewport: {
       height: 512,
       width: 16,
     },
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   const page = await browser.newPage();
 

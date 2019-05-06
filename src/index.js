@@ -36,11 +36,19 @@ const logger = loggerFactory();
           }
           catch(err) {
             const {message, stack} = err;
-            msg.reply(`${message}\`\`\`${stack}\`\`\``);
+            console.error(err);
+            try {
+              await msg.reply(`${message}\`\`\`${stack}\`\`\``);
+            }
+            catch {
+              await msg.reply(`${message}\`\`\`${stack.substring(0,1750)}\n...\`\`\``);
+            }
           }
           return;
         }
       }
+
+      msg.reply('Unknown command my friend');
     }
   });
 
