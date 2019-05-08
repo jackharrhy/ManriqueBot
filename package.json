@@ -13,7 +13,7 @@
     "bchess": "^1.0.8",
     "discord.js": "^11.4.2",
     "dotenv": "^8.0.0",
-    "ffmpeg-binaries": "^4.0.0",
+    "ffmpeg-static": "^2.4.0",
     "katex": "^0.10.1",
     "lowdb": "^1.0.0",
     "node-opus": "^0.3.1",
