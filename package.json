@@ -11,21 +11,21 @@
   "license": "ISC",
   "dependencies": {
     "bchess": "^1.0.8",
-    "discord.js": "^11.4.2",
-    "dotenv": "^8.0.0",
-    "ffmpeg-static": "^2.4.0",
-    "katex": "^0.10.1",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "ffmpeg-static": "^2.7.0",
+    "katex": "^0.11.1",
     "lowdb": "^1.0.0",
-    "node-opus": "^0.3.1",
-    "puppeteer": "^1.15.0",
+    "node-opus": "^0.3.3",
+    "puppeteer": "^1.20.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "shortid": "^2.2.14",
+    "shortid": "^2.2.15",
     "winston": "^3.2.1",
     "ytdl-core-discord": "^1.0.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.2.1"
   }
 }
