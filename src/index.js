@@ -3,10 +3,9 @@ const {
   commandPrefix,
   discordToken,
 }= require('./config');
-const loggerFactory = require('./logger');
+const logger = require('./logger');
 
 const client = new Discord.Client();
-const logger = loggerFactory();
 
 (async () => {
   const responses = await require('./responses')();
@@ -14,13 +13,13 @@ const logger = loggerFactory();
   client.on('error', console.error);
 
   client.on('ready', async () => {
-    logger.info('loggedin', client.user.tag);
+    logger.info(`loggedin: ${client.user.tag}`);
   });
 
   client.on('message', async (msg) => {
     const content = msg.content;
     if (content.startsWith(commandPrefix)) {
-      logger.info('message', msg.author.username, msg.author.id, content);
+      logger.info(`message: ${msg.author.username} - ${msg.author.id} - ${content}`);
 
       const command = content.substring(commandPrefix.length + 1);
 
@@ -36,7 +35,8 @@ const logger = loggerFactory();
           }
           catch(err) {
             const {message, stack} = err;
-            console.error(err);
+            logger.error(`${message}`);
+            console.error(stack);
             try {
               await msg.reply(`${message}\`\`\`${stack}\`\`\``);
             }

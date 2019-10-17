@@ -2,7 +2,7 @@ const winston = require('winston');
 
 const logFolder = './log/';
 
-const logger = winston.createLogger({
+module.exports = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
     winston.format.splat(),
@@ -19,14 +19,3 @@ const logger = winston.createLogger({
     new winston.transports.Console(),
   ]
 });
-
-module.exports = () => {
-  return {
-    info: (type, ...args) => {
-      if (typeof type !== 'string') {
-        throw new Error('Logging requires a initial type arg, as a string');
-      }
-      logger.info(`${type}:`, args);
-    }
-  }
-};
